@@ -1,13 +1,2 @@
-2026-02-03 13:12 - Complete the project - functionality add
-play a new song
-2026-02-03 12:51 - This needs to be completed
-edit the blank task
-call mr wick
-new work
-comming home 
-I love to work on this GUI
-wirte the code 
-this is new task
-this works fine
-this is new task to test
-2026-02-03 12:49 - Add a new task
+Scrum meeting at 10:15
+Explore the FreeSimpleGUI package

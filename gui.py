@@ -37,6 +37,13 @@ while True:
             todo_list[index] = new_task
             functions.write_file(todo_list)
             window['task_list'].update(values=todo_list)
+        case "Complete":
+            task_to_complete = values['task_list'][0]
+            todo_list = functions.read_file()
+            todo_list.remove(task_to_complete)
+            functions.write_file(todo_list)
+            window['task_list'].update(values=todo_list)
+            window['task'].update(value='')
         case "task_list":
             window['task'].update(value=values['task_list'][0])
 
