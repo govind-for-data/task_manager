@@ -6,7 +6,7 @@ lable = sg.Text("Type in a To-do")
 input_box = sg.InputText(tooltip="Enter to-do",key='task')
 add_button = sg.Button("Add")
 list_box = sg.Listbox(values=functions.read_file(),enable_events=True,
-                      size=(45,10),key='task_list')
+                      size=(45,10),key='task_list',font=("Helvetica",15))
 edit_button = sg.Button("Edit")
 complete_button = sg.Button("Complete")
 exit_button = sg.Button("Exit")
@@ -15,7 +15,7 @@ exit_button = sg.Button("Exit")
 window = sg.Window('My To-do List', layout=[[lable],
                                             [input_box,add_button],
                                             [list_box,edit_button, complete_button],
-                                            [exit_button]])
+                                            [exit_button]],font=("Helvetica",15))
 
 while True:
     event, values = window.read()
@@ -29,21 +29,28 @@ while True:
             functions.write_file(todo_list)
             window['task_list'].update(values=todo_list)
         case "Edit":
-            task_to_edit = values['task_list'][0]
-            new_task = values['task'] + "\n"
-
-            todo_list = functions.read_file()
-            index = todo_list.index(task_to_edit)
-            todo_list[index] = new_task
-            functions.write_file(todo_list)
-            window['task_list'].update(values=todo_list)
+            try:
+                task_to_edit = values['task_list'][0]
+                new_task = values['task'] + "\n"
+                todo_list = functions.read_file()
+                index = todo_list.index(task_to_edit)
+                todo_list[index] = new_task
+                functions.write_file(todo_list)
+                window['task_list'].update(values=todo_list)
+            except IndexError :
+                sg.popup("Please select an item first", font=("Helvetica",15))
         case "Complete":
-            task_to_complete = values['task_list'][0]
-            todo_list = functions.read_file()
-            todo_list.remove(task_to_complete)
-            functions.write_file(todo_list)
-            window['task_list'].update(values=todo_list)
-            window['task'].update(value='')
+            try:
+                task_to_complete = values['task_list'][0]
+                todo_list = functions.read_file()
+                todo_list.remove(task_to_complete)
+                functions.write_file(todo_list)
+                window['task_list'].update(values=todo_list)
+                window['task'].update(value='')
+            except IndexError :
+                sg.popup("Please select an item first", font=("Helvetica",15))
+        case "Exit":
+            break
         case "task_list":
             window['task'].update(value=values['task_list'][0])
 
