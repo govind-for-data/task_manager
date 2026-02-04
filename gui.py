@@ -19,8 +19,8 @@ window = sg.Window('My To-do List', layout=[[lable],
 
 while True:
     event, values = window.read()
-    print(event)
-    print(values)
+    #print(event)
+    #print(values)
     match event:
         case "Add":
             todo_list = functions.read_file()
