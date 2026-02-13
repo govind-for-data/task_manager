@@ -1,4 +1,3 @@
-Scrum meeting at 10:15
-Explore the FreeSimpleGUI package
-Commit the code and push to origin
-
+Take a scrum call at 10:15
+Postpone the car service for 2 weeks
+Schedule the doctor's appointment

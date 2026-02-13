@@ -31,7 +31,9 @@ while True:
         case "Edit":
             try:
                 task_to_edit = values['task_list'][0]
+                #print(task_to_edit)
                 new_task = values['task'] + "\n"
+                #print(new_task)
                 todo_list = functions.read_file()
                 index = todo_list.index(task_to_edit)
                 todo_list[index] = new_task
